@@ -1,4 +1,4 @@
-const booking = [  
+const bookingsData = [  
   {
     id: "5fwrgu4i7k55hl6ty",
       userID: 50,
@@ -35,3 +35,5 @@ const booking = [
             roomServiceCharges: []
   }
 ]
+
+export default bookingsData
