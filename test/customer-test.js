@@ -14,7 +14,6 @@ describe('customer', () =>  {
 
   it('should be a function', () => {
     expect(Customer).to.be.a('function');
-
   });
 
   it('should instantiate an new customer', () => {
@@ -31,5 +30,9 @@ describe('customer', () =>  {
 
   it('should have an array for bookings', () => {
     expect(customer.bookings).to.deep.equal([])
-  })
+  });
+
+  it('should have a user name', () => {
+    expect(customer.userName).to.equal(`customer${customersData[0].id}`)
+  });
 })
