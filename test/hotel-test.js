@@ -19,6 +19,18 @@ describe('hotel', () => {
     customer2 = new Customer(customersData[1]);
   });
 
+  it('should hold room data', () => {
+    expect(hotel.roomsData).to.equal(roomsData);
+  });
+
+  it('should hold customer data', () => {
+    expect(hotel.customersData).to.equal(customersData)
+  });
+
+  it('should hold booking data', () => {
+    expect(hotel.bookingsData).to.equal(bookingsData)
+  });
+
   it('should be a function', () => {
     expect(Hotel).to.be.a('function')
   });
