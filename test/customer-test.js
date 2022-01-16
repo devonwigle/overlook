@@ -35,4 +35,8 @@ describe('customer', () =>  {
   it('should have a user name', () => {
     expect(customer.userName).to.equal(`customer${customersData[0].id}`)
   });
+
+  it('should have a password', () => {
+    expect(customer.password).to.equal(`overlook2021`)
+  })
 })
