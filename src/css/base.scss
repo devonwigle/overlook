@@ -1,6 +1,79 @@
 /* This is an example of how to import a partial scss file*/
 @import '_variables';
+@import '_normalize';
+@import '_mixins';
 
 body {
-  background: $primary-background;
+  background-color: $primary-background;
+}
+
+nav {
+  @include justify-center;
+  background-color: $nav-color;
+  color: $light-text;
+  height: 75px;
+}
+
+.image-scroll {
+  display: inline-block;
+  white-space: nowrap;
+  background: $light-text;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 150px;
+  padding-top: 50px;
+  max-width: 100%;
+  width: 100%
+}
+
+.hotel-name {
+  margin-left: 30px;
+}
+
+h2 {
+  color: $dark-text;
+  margin: 20px 30px 0px 30px;
+}
+
+.user-box {
+  color: $light-text;
+  margin: 28px;
+}
+
+.booking {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  background-color: black;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.titles {
+  @include justify-center;
+}
+
+.choice-selection {
+  @include justify-center;
+  flex-direction: column;
+  padding-top: 35px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bookable-rooms {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.options {
+  height: 200px;
+  width: 400px;
+  background-color: black;
+  margin: 30px;
 }
