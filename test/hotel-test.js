@@ -102,14 +102,7 @@ describe('hotel', () => {
     ])
   });
   
-  it('should have a method to sum user\'s bookings', () => {
-    hotel.addCustomers();
-    hotel.addBookings();
-    hotel.addRooms();
-    hotel.filterBookingsByCustomerID(customer2)
-    
-    expect(hotel.sumUserBookings(customer2)).to.equal(798.59)
-  });
+  
 
   it('should have a method to filter by date', () => {
     hotel.addRooms();
