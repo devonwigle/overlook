@@ -9,7 +9,7 @@ import Customer from './classes/customer';
 let hotel;
 let currentUser;
 let sum;
-let rooms;
+let response;
 
 //QuerySelectors
 const searchForm = document.querySelector('form');
@@ -33,7 +33,6 @@ const addInfo = () => {
 }
 
 const singleCustomerInfo = () => {
-  defineUser(50);
   hotel.filterBookingsByCustomerID(currentUser);
   domUpdates.greetUser(currentUser);
   sum = currentUser.sumUserBookings(hotel)
@@ -42,8 +41,7 @@ const singleCustomerInfo = () => {
 }
 
 const fetchTheData = () => {
-  const response = Promise.all([fetchAllData('rooms'), fetchAllData('customers'), fetchAllData('bookings')])
-  return response
+  return response = Promise.all([fetchAllData('rooms'), fetchAllData('customers'), fetchAllData('bookings')])
 }
 
 const defineUser = (userID) => {
