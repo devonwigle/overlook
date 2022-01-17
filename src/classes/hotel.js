@@ -51,18 +51,6 @@ class Hotel {
     return customer.bookings
   };
 
-  sumUserBookings(customer) {
-    let sum = customer.bookings.reduce((sum, booking) => {
-      this.allRooms.forEach(room => {
-        if (room.roomNumber === booking.roomNumber) {
-          sum += room.cost
-        }
-      })
-      return sum
-    }, 0)
-    return sum
-  }
-
   filterRoomsByDate(dateInput) {
     let formatInputDate = dateInput.split('-');
     let properInputDate = formatInputDate.join('/');
