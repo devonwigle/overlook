@@ -1,6 +1,7 @@
 /* This is an example of how to import a partial scss file*/
 @import '_variables';
 @import '_normalize';
+@import '_mixins';
 
 body {
   background-color: $primary-background;
@@ -9,11 +10,11 @@ body {
 nav {
   background-color: $nav-color;
   color: $light-text;
+  height: 75px;
 }
 
 .image-scroll {
-  display: flex;
-  justify-content: space-between;
+  @include justify-center;
   background: $light-text;
   overflow-x: auto;
   overflow-y: hidden;
@@ -21,8 +22,24 @@ nav {
   padding-top: 50px;
 }
 
+h2 {
+  color: $dark-text;
+}
+
 .booking {
   height: 100px;
   width: 100px;
   background-color: black;
+}
+
+.titles {
+  @include justify-center;
+}
+
+.choice-selection {
+  @include justify-center;
+}
+
+form {
+  @include justify-center;
 }
