@@ -26,6 +26,21 @@ let domUpdates = {
         <p>Confirmation Number: ${booking.id}</p>
       </div>`
     )
+  },
+  displayAvailableRoomsByDateType(availableRooms) {
+    let bookableRooms = document.querySelector('.bookable-rooms');
+    bookableRooms.innerHTML = ``
+    availableRooms.forEach(room => bookableRooms.innerHTML += `
+      <div class="options">
+        <p>Room Number: ${room.roomNumber}</p>  
+        <p>Room Type: ${room.roomType}</p>
+        <p>Has a Bidet: ${room.bidet}</p>
+        <p>Bed Size: ${room.bedSize}</p>
+        <p>Number of Beds: ${room.numBeds}</p>
+        <p>Cost Per Night: $${room.cost}</p>
+        <button class="book-it">Book It!</button>
+      </div>`
+    )
   }
 }
 
