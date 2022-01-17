@@ -48,12 +48,10 @@ class Hotel {
         })
       }
     })
-    console.log('idbookings', customer.bookings)
     return customer.bookings
   };
 
   sumUserBookings(customer) {
-    console.log('custBooka', customer.bookings)
     let sum = customer.bookings.reduce((sum, booking) => {
       this.allRooms.forEach(room => {
         if (room.roomNumber === booking.roomNumber) {
