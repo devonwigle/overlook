@@ -21,7 +21,8 @@
   <div class="choice-selection">
     <form>
       <label> Choose a booking Date:   
-        <input type="date" id="selectedDate" value="2022-01-19" min="2022-01-19" max="2022-05-31"></input> 
+        <input type="date" id="selectedDate" name="dateSelected" value="2022-01-19" min="2022-01-19" max="2022-05-31" required></input> 
+        <button type="submit" class="search-by-date">Search</button>
       </label>
       <label> Choose a Room Type: 
         <input type="radio" name="room type" value="single room">Single Room</input>
@@ -33,12 +34,6 @@
     <section class="room-selections">
       <div class="bookable-rooms">
         <!-- Bookable rooms will go here -->
-        <div class="options"></div>
-        <div class="options"></div>
-        <div class="options"></div>
-        <div class="options"></div>
-        <div class="options"></div>
-        <div class="options"></div>
       </div>
     </section>
   </div>
