@@ -24,4 +24,4 @@ const postData = (newPost) => {
 }
 
 
-export {fetchAllData}
+export {fetchAllData, fetchSingleUser, postData}

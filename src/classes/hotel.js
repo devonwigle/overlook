@@ -38,22 +38,18 @@ class Hotel {
   }
 
   filterBookingsByCustomerID(customer) {
-    let filteredBookingsById = this.allBookings.filter(booking => customer.id === booking.userID);
-    return filteredBookingsById
-  }
-
-  sumUserBookings(customer) {
-    let filteredBookingsById = this.allBookings.filter(booking => customer.id === booking.userID);
-    let sum = filteredBookingsById.reduce((sum, booking) => {
-      this.allRooms.forEach(room => {
-        if (room.roomNumber === booking.roomNumber) {
-          sum += room.cost
-        }
-      })
-      return sum
-    }, 0)
-    return sum
-  }
+    this.allBookings.forEach(booking => {
+      if(customer.id === booking.userID) {
+        customer.bookings.push({
+          id: booking.id,
+          userID: booking.userID,
+          date: booking.date,
+          roomNumber: booking.roomNumber
+        })
+      }
+    })
+    return customer.bookings
+  };
 
   filterRoomsByDate(dateInput) {
     let formatInputDate = dateInput.split('-');
