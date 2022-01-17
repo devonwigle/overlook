@@ -1,6 +1,28 @@
 /* This is an example of how to import a partial scss file*/
 @import '_variables';
+@import '_normalize';
 
 body {
-  background: $primary-background;
+  background-color: $primary-background;
+}
+
+nav {
+  background-color: $nav-color;
+  color: $light-text;
+}
+
+.image-scroll {
+  display: flex;
+  justify-content: space-between;
+  background: $light-text;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 150px;
+  padding-top: 50px;
+}
+
+.booking {
+  height: 100px;
+  width: 100px;
+  background-color: black;
 }
