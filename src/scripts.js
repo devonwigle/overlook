@@ -1,5 +1,5 @@
 
-import {fetchAllData} from './APICalls';
+import {fetchAllData, fetchSingleUser, postData} from './APICalls';
 import Hotel from './classes/hotel';
 import './css/base.scss';
 
