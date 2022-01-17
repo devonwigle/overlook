@@ -8,6 +8,7 @@ import Customer from './classes/customer';
 // Global variables
 let hotel;
 let currentUser;
+let sum;
 let rooms;
 
 
@@ -18,7 +19,7 @@ const loadPage = () => {
     hotel = new Hotel(data[0], data[1], data[2])
     addInfo()
     defineUser(50)
-    domUpdates.greetUser(currentUser)
+    singleCustomerInfo()
   })
 }
 
@@ -26,6 +27,15 @@ const addInfo = () => {
   hotel.addRooms();
   hotel.addBookings();
   hotel.addCustomers();
+}
+
+const singleCustomerInfo = () => {
+  defineUser(50);
+  hotel.filterBookingsByCustomerID(currentUser);
+  domUpdates.greetUser(currentUser);
+  sum = currentUser.sumUserBookings(hotel)
+  domUpdates.displayUsersExpenses(sum)
+  domUpdates.displayUserBookings(currentUser);
 }
 
 const fetchTheData = () => {
@@ -38,10 +48,7 @@ const defineUser = (userID) => {
   console.log('user', currentUser)
   return currentUser
 }
-const iAmAFunction = () => {
-  console.log('hello')
-  console.log('function', hotel)
-}
+
 //eventlisteners
 window.addEventListener('load', () => {
   loadPage()
