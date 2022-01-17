@@ -4,13 +4,45 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Overlook Hotel</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
-
+  <nav>
+    <div class="title">Overlook Hotel</div>
+    <article class="user-box">Hello To You!</article>
+  </nav>
+  <div>
+    <h2>Your Bookings:</h2>
+    <h2>Amount Spent:</h2>
+  </div>
+  <section class="image-scroll">
+    <div class="booking"></div>
+    <div class="booking"></div>
+    <div class="booking"></div>
+    <div class="booking"></div>
+    <div class="booking"></div>
+    <div class="booking"></div>
+    <!-- Booked stays will go here -->
+  </section>
+  <div>
+    <form>
+      <label> Choose a booking Date:   
+        <input type="date" id="selectedDate" value="2022-01-19" min="2022-01-19" max="2022-05-31"></input> 
+      </label>
+      <label> Choose a Room Type: 
+        <input type="radio" name="room type" value="single room">Single Room</input>
+        <input type="radio" name="room type" value="suite">Suite</input>
+        <input type="radio" name="room type" value="junior suite">Junior Suite</input>
+        <input type="radio" name="room type" value="residential suite">Residential Suite</input>
+      </label>
+    </form>
+    <section class="room-selections">
+      <div class="bookable-rooms">
+        <p>Pick a date to see room selection</p>
+        <!-- Bookable rooms will go here -->
+      </div>
+    </section>>
+  </div>
+    
 </body>
 </html>
