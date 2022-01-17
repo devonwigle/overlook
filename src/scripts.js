@@ -11,6 +11,9 @@ let currentUser;
 let sum;
 let rooms;
 
+//QuerySelectors
+const searchForm = document.querySelector('form');
+
 
 // Functions
 const loadPage = () => {
@@ -54,5 +57,20 @@ window.addEventListener('load', () => {
   loadPage()
   domUpdates.greetUser(currentUser)
 })
+
+searchForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const dateInput = formData.get('dateSelected');
+  const roomTypeInput = formData.get('room type');
+  if (!roomTypeInput) {
+    const availableRooms = hotel.filterRoomsByDate(dateInput);
+    domUpdates.displayAvailableRoomsByDateType(availableRooms);
+  } else {
+    const availableRooms = hotel.filterRoomsByType(roomTypeInput, dateInput);
+    domUpdates.displayAvailableRoomsByDateType(availableRooms);
+  }
+  e.target.reset()
+});
 
 export default currentUser
