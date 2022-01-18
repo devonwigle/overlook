@@ -46,6 +46,12 @@ let domUpdates = {
   noAvailability() {
     let bookableRooms = document.querySelector('.bookable-rooms');
     bookableRooms.innerHTML = `<h2>We SOOOO sorry, your choices are not available on this day.  Please try another day, you will not be sorry</h2>`
+  },
+  show(show) {
+    show.classList.remove('hidden')
+  },
+  hide(hide) {
+    hide.classList.add('hidden')
   }
 }
 

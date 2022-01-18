@@ -67,6 +67,17 @@ h2 {
   @include display-direction-justify(flex, column, space-between);
   padding-top: 35px;
 }
+.login-page {
+  @include display-direction-justify(flex, row, center);
+  align-content: center;
+}
+
+.login-box {
+  @include display-direction-justify(flex, row, center);
+  @include box-size(160px, 400px);
+  background-color: $nav-color;
+  padding-top: 80px;
+}
 
 form {
   @include display-direction(flex, column);
@@ -94,4 +105,8 @@ label {
 
 .room-label {
   margin-bottom: 45px;
+}
+
+.hidden {
+  display: none;
 }

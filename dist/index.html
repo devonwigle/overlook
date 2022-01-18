@@ -7,36 +7,47 @@
   <title>Overlook Hotel</title>
 </head>
 <body>
-  <nav>
-    <h1 class="hotel-name">Overlook Hotel</h1>
-    <h2 class="user-box">Hello To You!</h2>
-  </nav>
-  <div class="titles">
-    <h2>Your Bookings:</h2>
-    <h2 class="amount">Amount Spent:</h2>
-  </div>
-  <section class="image-scroll">
-    <!-- Booked stays will go here -->
+  <section class="login-page ">
+    <article class="login-box">
+      <form class="login-form">
+        <input type="text" id="usernameInput" name="username" placeholder="username" required></input>
+        <input type="text" id="passwordInput" name="password" placeholder="password" required></input>
+        <button class="login-button" type="submit">Submit</button>
+      </form>
+    </article>
   </section>
-  <div class="choice-selection">
-    <form>
-      <label> Choose a booking Date:   
-        <input type="date" id="selectedDate" name="dateSelected" value="2022-01-19" min="2022-01-19" max="2022-05-31" required></input> 
-        <button type="submit" class="search-by-date">Search</button>
-      </label>
-      <label class="room-label"> Choose a Room Type: 
-        <input class="radio" type="radio" name="room type" value="single room">Single Room</input>
-        <input class="radio" type="radio" name="room type" value="suite">Suite</input>
-        <input class="radio" type="radio" name="room type" value="junior suite">Junior Suite</input>
-        <input class="radio" type="radio" name="room type" value="residential suite">Residential Suite</input>
-      </label>
-    </form>
-    <section class="room-selections">
-      <div class="bookable-rooms">
-        <!-- Bookable rooms will go here -->
-      </div>
+  <section class="main-page hidden">
+    <nav>
+      <h1 class="hotel-name">Overlook Hotel</h1>
+      <h2 class="user-box">Hello To You!</h2>
+    </nav>
+    <div class="titles">
+      <h2>Your Bookings:</h2>
+      <h2 class="amount">Amount Spent:</h2>
+    </div>
+    <section class="image-scroll">
+      <!-- Booked stays will go here -->
     </section>
-  </div>
+    <div class="choice-selection">
+      <form class="selection-form">
+        <label> Choose a booking Date:   
+          <input type="date" id="selectedDate" name="dateSelected" value="2022-01-19" min="2022-01-19" max="2022-05-31" required></input> 
+          <button type="submit" class="search-by-date">Search</button>
+        </label>
+        <label class="room-label"> Choose a Room Type: 
+          <input class="radio" type="radio" name="room type" value="single room">Single Room</input>
+          <input class="radio" type="radio" name="room type" value="suite">Suite</input>
+          <input class="radio" type="radio" name="room type" value="junior suite">Junior Suite</input>
+          <input class="radio" type="radio" name="room type" value="residential suite">Residential Suite</input>
+        </label>
+      </form>
+      <section class="room-selections">
+        <div class="bookable-rooms">
+          <!-- Bookable rooms will go here -->
+        </div>
+      </section>
+    </div>
+  </section>
   <script src="bundle.js"></script>
 </body>
 </html>
