@@ -11,24 +11,46 @@ let currentUser;
 let sum;
 let newPost;
 let dateInput;
-let response;
 let availableRooms;
 
 //QuerySelectors
-const searchForm = document.querySelector('form');
-const bookable = document.querySelector('.bookable-rooms')
+const bookable = document.querySelector('.bookable-rooms');
+const usernameInput = document.querySelector('#usernameInput');
+const passwordInput = document.querySelector('#passwordInput');
+const loginButton = document.querySelector('.login-button');
+const mainPage = document.querySelector('.main-page');
+const loginPage = document.querySelector('.login-page');
+const selectionForm = document.querySelector('.selection-form')
 
 // Functions
 const loadPage = () => {
-  fetchTheData()
+  fetchTheData(currentUser.id)
     .then(data => {
       hotel = new Hotel(data[0], data[1], data[2])
       addInfo()
-      defineUser(50)
+      defineCurrentUser()
       singleCustomerInfo()
       domUpdates.greetUser(currentUser)
     })
     .catch(error => domUpdates.fetchErrorMessage(error))
+}
+
+const login = (e) => {
+  e.preventDefault();
+  let userID = defineUser(usernameInput)
+  if (userID > 0 && userID < 51 && passwordInput.value === 'overlook2021') {
+    fetchTheData(userID)
+    .then(data => {
+      hotel = new Hotel(data[0], data[1], data[2])
+      addInfo()
+      console.log('hotel', hotel)
+      defineCurrentUser()
+      singleCustomerInfo()
+    })
+    .catch(error => domUpdates.fetchErrorMessage(error))
+  }
+  domUpdates.show(mainPage)
+  domUpdates.hide(loginPage)
 }
 
 const addInfo = () => {
@@ -45,13 +67,18 @@ const singleCustomerInfo = () => {
   domUpdates.displayUserBookings(currentUser);
 }
 
-const fetchTheData = () => {
-  return response = Promise.all([fetchAllData('rooms'), fetchAllData('customers'), fetchAllData('bookings')])
+const fetchTheData = (userID) => {
+  return response = Promise.all([fetchAllData('rooms'), fetchSingleUser(userID), fetchAllData('bookings')])
 }
 
-const defineUser = (userID) => {
-  currentUser = hotel.allCustomers[userID - 1]
-  return currentUser
+const defineUser = (input) => {
+  let username = input.value
+  let userID = username.substring(8)
+  return userID
+}
+
+const defineCurrentUser = () => {
+  return currentUser = hotel.allCustomers[0];
 }
 
 const definePost = (currentUser, dateInput, id) => {
@@ -62,13 +89,11 @@ const definePost = (currentUser, dateInput, id) => {
   }
 }
 
-//eventlisteners
-window.addEventListener('load', () => {
-  loadPage()
-  
+loginButton.addEventListener('click', (e) => {
+  login(e)
 })
 
-searchForm.addEventListener('submit', (e) => {
+selectionForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
   let unformattedDate = formData.get('dateSelected');
