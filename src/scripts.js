@@ -9,11 +9,14 @@ import Customer from './classes/customer';
 let hotel;
 let currentUser;
 let sum;
+let newPost;
+let dateInput;
 let response;
 
 //QuerySelectors
 const searchForm = document.querySelector('form');
-
+const post = document.querySelector('.book-it')
+const bookable = document.querySelector('.bookable-rooms')
 
 // Functions
 const loadPage = () => {
@@ -23,6 +26,7 @@ const loadPage = () => {
     addInfo()
     defineUser(50)
     singleCustomerInfo()
+    console.log('user', currentUser)
   })
 }
 
@@ -46,8 +50,17 @@ const fetchTheData = () => {
 
 const defineUser = (userID) => {
   currentUser = hotel.allCustomers[userID - 1]
-  console.log('user', currentUser)
   return currentUser
+}
+
+const definePost = (currentUser, dateInput, id) => {
+  let formatInputDate = dateInput.split('-');
+  let properInputDate = formatInputDate.join('/');
+  newPost = {
+    userID: currentUser.id,
+    date: properInputDate,
+    roomNumber: parseInt(id)
+  }
 }
 
 //eventlisteners
@@ -59,7 +72,7 @@ window.addEventListener('load', () => {
 searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
-  const dateInput = formData.get('dateSelected');
+  dateInput = formData.get('dateSelected');
   const roomTypeInput = formData.get('room type');
   if (!roomTypeInput) {
     const availableRooms = hotel.filterRoomsByDate(dateInput);
@@ -70,5 +83,14 @@ searchForm.addEventListener('submit', (e) => {
   }
   e.target.reset()
 });
+
+bookable.addEventListener('click', (e) => {
+  let id = e.target.closest('button').id
+  definePost(currentUser, dateInput, id)
+  
+  console.log(newPost)
+  postData(newPost).then(() => loadPage())
+})
+
 
 export default currentUser
