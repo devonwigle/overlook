@@ -38,7 +38,7 @@ let domUpdates = {
         <p>Bed Size: ${room.bedSize}</p>
         <p>Number of Beds: ${room.numBeds}</p>
         <p>Cost Per Night: $${room.cost}</p>
-        <button class="book-it">Book It!</button>
+        <button class="book-it" id="${room.roomNumber}">Book It!</button>
       </div>`
     )
   }
