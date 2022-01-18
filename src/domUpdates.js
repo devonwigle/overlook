@@ -41,6 +41,15 @@ let domUpdates = {
         <button class="book-it" id="${room.roomNumber}">Book It!</button>
       </div>`
     )
+  },
+  fetchErrorMessage(error) {
+    let message;
+    let imageScroll = document.querySelector('.image-scroll');
+    if (error.message === 'Failed to fetch') {
+      imageScroll.innerHTML = `<h2> Oops, is your internet on? </h2>`
+    } else {
+      message = error.message;
+    }
   }
 }
 
