@@ -8,9 +8,9 @@ const fetchAllData = (extraBit) => {
 }
 
 const fetchSingleUser = (idNum) => {
-  return fetch(`${url}user/${idNum}`)
+  return fetch(`${url}customers/${idNum}`)
     .then(response => errorCheck(response))
-    .then(data => data[idNum])
+    .then(data => data)
     .catch(error => (error))
 }
 
