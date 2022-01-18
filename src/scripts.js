@@ -94,10 +94,12 @@ bookable.addEventListener('click', (e) => {
   postData(newPost).then(() => loadPage())
 })
 bookable.addEventListener('keydown', (e) => {
-  ((e.key === 'Enter' || e.key === 13) || (e.key === ' ' || e.key === 32)) 
-  let id = e.target.closest('button').id
-  definePost(currentUser, dateInput, id)
-  postData(newPost).then(() => loadPage())
+  if ((e.key === 'Enter' || e.key === 13) || (e.key === ' ' || e.key === 32)) {
+    e.preventDefault()
+    let id = e.target.closest('button').id
+    definePost(currentUser, dateInput, id)
+    postData(newPost).then(() => loadPage())
+  }
 })
 
 export default currentUser
