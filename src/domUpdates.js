@@ -5,6 +5,7 @@ import currentUser from './scripts'
 // Global variables
 let hotel;
 let sum;
+
 // let currentUser;
 
 let domUpdates = {
@@ -50,6 +51,10 @@ let domUpdates = {
     } else {
       message = error.message;
     }
+  },
+  noAvailability() {
+    let bookableRooms = document.querySelector('.bookable-rooms');
+    bookableRooms.innerHTML = `<h2>We SOOOO sorry, your choices are not available on this day.  Please try another day, you will not be sorry</h2>`
   }
 }
 
