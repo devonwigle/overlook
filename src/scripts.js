@@ -12,22 +12,23 @@ let sum;
 let newPost;
 let dateInput;
 let response;
+let availableRooms;
 
 //QuerySelectors
 const searchForm = document.querySelector('form');
-const post = document.querySelector('.book-it')
 const bookable = document.querySelector('.bookable-rooms')
 
 // Functions
 const loadPage = () => {
   fetchTheData()
-  .then(data => {
-    hotel = new Hotel(data[0], data[1], data[2])
-    addInfo()
-    defineUser(50)
-    singleCustomerInfo()
-    domUpdates.greetUser(currentUser)
-  })
+    .then(data => {
+      hotel = new Hotel(data[0], data[1], data[2])
+      addInfo()
+      defineUser(50)
+      singleCustomerInfo()
+      domUpdates.greetUser(currentUser)
+    })
+    .catch(error => domUpdates.fetchErrorMessage(error))
 }
 
 const addInfo = () => {
@@ -74,12 +75,15 @@ searchForm.addEventListener('submit', (e) => {
   let formatDate = unformattedDate.split('-');
   dateInput = formatDate.join('/');
   const roomTypeInput = formData.get('room type');
+
   if (!roomTypeInput) {
-    const availableRooms = hotel.filterRoomsByDate(dateInput);
+    availableRooms = hotel.filterRoomsByDate(dateInput);
+    domUpdates.displayAvailableRoomsByDateType(availableRooms);
+  } else if (roomTypeInput && availableRooms.length === 0) {
+    availableRooms = hotel.filterRoomsByType(roomTypeInput, dateInput);
     domUpdates.displayAvailableRoomsByDateType(availableRooms);
   } else {
-    const availableRooms = hotel.filterRoomsByType(roomTypeInput, dateInput);
-    domUpdates.displayAvailableRoomsByDateType(availableRooms);
+    domUpdates.noAvailability()
   }
   e.target.reset()
 });
