@@ -11,6 +11,7 @@ let currentUser;
 let sum;
 let newPost;
 let dateInput;
+let response;
 
 //QuerySelectors
 const searchForm = document.querySelector('form');
@@ -44,8 +45,7 @@ const singleCustomerInfo = () => {
 }
 
 const fetchTheData = () => {
-  const response = Promise.all([fetchAllData('rooms'), fetchAllData('customers'), fetchAllData('bookings')])
-  return response
+  return response = Promise.all([fetchAllData('rooms'), fetchAllData('customers'), fetchAllData('bookings')])
 }
 
 const defineUser = (userID) => {
