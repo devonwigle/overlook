@@ -89,7 +89,6 @@ searchForm.addEventListener('submit', (e) => {
 
 bookable.addEventListener('click', (e) => {
   let id = e.target.closest('button').id
-  console.log('bookable id', id)
   definePost(currentUser, dateInput, id)
   postData(newPost).then(() => loadPage())
 })
