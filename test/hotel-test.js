@@ -111,7 +111,7 @@ describe('hotel', () => {
 
     expect(hotel.filterRoomsByDate('2022-02-25')).to.deep.equal([
       {
-        roomNumber: 1,
+        number: 1,
         roomType: 'residential suite',
         bidet: true,
         bedSize: 'queen',
@@ -119,7 +119,7 @@ describe('hotel', () => {
         cost: 358.4
       },
       {
-        roomNumber: 2,
+        number: 2,
         roomType: 'suite',
         bidet: false,
         bedSize: 'full',
@@ -127,7 +127,7 @@ describe('hotel', () => {
         cost: 477.38
       },
       {
-        roomNumber: 3,
+        number: 3,
         roomType: 'single room',
         bidet: false,
         bedSize: 'king',
@@ -135,7 +135,7 @@ describe('hotel', () => {
         cost: 491.14
       },
       {
-        roomNumber: 11,
+        number: 11,
         roomType: 'single room',
         bidet: true,
         bedSize: 'twin',
@@ -143,7 +143,7 @@ describe('hotel', () => {
         cost: 207.24
       },
       {
-        roomNumber: 13,
+        number: 13,
         roomType: 'single room',
         bidet: false,
         bedSize: 'queen',
@@ -159,7 +159,7 @@ describe('hotel', () => {
 
     expect(hotel.filterRoomsByType('single room', '2022-02-25')).to.deep.equal([
       {
-        roomNumber: 3,
+        number: 3,
         roomType: 'single room',
         bidet: false,
         bedSize: 'king',
@@ -167,7 +167,7 @@ describe('hotel', () => {
         cost: 491.14
       },
       {
-        roomNumber: 11,
+        number: 11,
         roomType: 'single room',
         bidet: true,
         bedSize: 'twin',
@@ -175,7 +175,7 @@ describe('hotel', () => {
         cost: 207.24
       },
       {
-        roomNumber: 13,
+        number: 13,
         roomType: 'single room',
         bidet: false,
         bedSize: 'queen',
