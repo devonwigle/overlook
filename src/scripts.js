@@ -22,13 +22,13 @@ const bookable = document.querySelector('.bookable-rooms')
 const loadPage = () => {
   fetchTheData()
     .then(data => {
-    hotel = new Hotel(data[0], data[1], data[2])
-    addInfo()
-    defineUser(50)
-    singleCustomerInfo()
-    domUpdates.greetUser(currentUser)
-  })
-  .catch(error => domUpdates.fetchErrorMessage(error))
+      hotel = new Hotel(data[0], data[1], data[2])
+      addInfo()
+      defineUser(50)
+      singleCustomerInfo()
+      domUpdates.greetUser(currentUser)
+    })
+    .catch(error => domUpdates.fetchErrorMessage(error))
 }
 
 const addInfo = () => {
