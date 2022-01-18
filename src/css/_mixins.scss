@@ -1,4 +1,25 @@
-@mixin justify-center {
-  display: flex;
-  justify-content: space-between;
+@mixin display-direction-justify($display, $direction, $justify) {
+  display: $display;
+  flex-direction: $direction;
+  justify-content: $justify;
+}
+
+@mixin display-direction($flex, $direction) {
+  display: $flex;
+  flex-direction: $direction;
+}
+
+@mixin margin-left-right($left, $right) {
+  margin-left: $left;
+  margin-right: $right;
+}
+
+@mixin margin($top, $right, $bottom, $left) {
+  margin: $top $right $bottom $left
+}
+
+
+@mixin box-size($height, $width) {
+  height: $height;
+  width: $width,
 }
