@@ -75,15 +75,14 @@ searchForm.addEventListener('submit', (e) => {
   let formatDate = unformattedDate.split('-');
   dateInput = formatDate.join('/');
   const roomTypeInput = formData.get('room type');
-
   if (!roomTypeInput) {
     availableRooms = hotel.filterRoomsByDate(dateInput);
     domUpdates.displayAvailableRoomsByDateType(availableRooms);
-  } else if (roomTypeInput && availableRooms.length === 0) {
+  } else if (roomTypeInput && !availableRooms) {
+    domUpdates.noAvailability()
+  } else if (roomTypeInput && availableRooms.length > 0) {
     availableRooms = hotel.filterRoomsByType(roomTypeInput, dateInput);
     domUpdates.displayAvailableRoomsByDateType(availableRooms);
-  } else {
-    domUpdates.noAvailability()
   }
   e.target.reset()
 });
@@ -93,6 +92,13 @@ bookable.addEventListener('click', (e) => {
   definePost(currentUser, dateInput, id)
   postData(newPost).then(() => loadPage())
 })
-
+bookable.addEventListener('keydown', (e) => {
+  if ((e.key === 'Enter' || e.key === 13) || (e.key === ' ' || e.key === 32)) {
+    e.preventDefault()
+    let id = e.target.closest('button').id
+    definePost(currentUser, dateInput, id)
+    postData(newPost).then(() => loadPage())
+  }
+})
 
 export default currentUser
