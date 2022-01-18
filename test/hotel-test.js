@@ -11,12 +11,10 @@ import Hotel from '../src/classes/hotel';
 describe('hotel', () => {
   let hotel;
   let customer1;
-  let customer2;
 
   beforeEach(() => {
     hotel = new Hotel(roomsData, customersData, bookingsData);
     customer1 = new Customer(customersData[0]);
-    customer2 = new Customer(customersData[1]);
   });
 
   it('should hold room data', () => {
@@ -66,15 +64,15 @@ describe('hotel', () => {
   it('should have a method to add customers to array', () => {
     hotel.addCustomers()
 
-    expect(hotel.allCustomers.length).to.equal(2)
+    expect(hotel.allCustomers.length).to.equal(1)
   });
 
   it('should have a method to filter bookings by customer ID', () => {
     hotel.addCustomers();
     hotel.addBookings();
-    hotel.filterBookingsByCustomerID(customer2)
+    hotel.filterBookingsByCustomerID(customer1)
 
-    expect(customer2.bookings).to.be.deep.equal([
+    expect(customer1.bookings).to.be.deep.equal([
       {
         id: '5fwrgu4i7k55hl6ty',
         userID: 50,
@@ -107,7 +105,7 @@ describe('hotel', () => {
   it('should have a method to filter by date', () => {
     hotel.addRooms();
     hotel.addBookings();
-    hotel.filterBookingsByCustomerID(customer2)
+    hotel.filterBookingsByCustomerID(customer1)
 
     expect(hotel.filterRoomsByDate('2022-02-25')).to.deep.equal([
       {
