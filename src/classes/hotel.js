@@ -30,11 +30,9 @@ class Hotel {
   }
 
   addCustomers() {
-    this.customersData.forEach(customerData => {
-      let customer = new Customer(customerData);
+      let customer = new Customer(this.customersData);
       this.allCustomers.push(customer);
       return customer;
-    })
   }
 
   filterBookingsByCustomerID(customer) {

@@ -8,12 +8,9 @@ import Hotel from '../src/classes/hotel';
 
 describe('customer', () =>  {
   let hotel;
-  let customer1;
-  let customer2;
   let customer; 
   beforeEach(() => {
     customer = new Customer(customersData[0])
-    customer2 = new Customer(customersData[1]);
     hotel = new Hotel(roomsData, customersData, bookingsData);
   });
 
@@ -49,8 +46,8 @@ describe('customer', () =>  {
     hotel.addCustomers();
     hotel.addBookings();
     hotel.addRooms();
-    hotel.filterBookingsByCustomerID(customer2)
+    hotel.filterBookingsByCustomerID(customer)
 
-    expect(customer2.sumUserBookings(hotel)).to.equal(798.59)
+    expect(customer.sumUserBookings(hotel)).to.equal(798.59)
   });
 })
