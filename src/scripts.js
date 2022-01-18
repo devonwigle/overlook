@@ -26,7 +26,7 @@ const loadPage = () => {
     addInfo()
     defineUser(50)
     singleCustomerInfo()
-    console.log('user', currentUser)
+    domUpdates.greetUser(currentUser)
   })
 }
 
@@ -54,11 +54,9 @@ const defineUser = (userID) => {
 }
 
 const definePost = (currentUser, dateInput, id) => {
-  let formatInputDate = dateInput.split('-');
-  let properInputDate = formatInputDate.join('/');
   newPost = {
     userID: currentUser.id,
-    date: properInputDate,
+    date: dateInput,
     roomNumber: parseInt(id)
   }
 }
@@ -66,13 +64,15 @@ const definePost = (currentUser, dateInput, id) => {
 //eventlisteners
 window.addEventListener('load', () => {
   loadPage()
-  domUpdates.greetUser(currentUser)
+  
 })
 
 searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
-  dateInput = formData.get('dateSelected');
+  let unformattedDate = formData.get('dateSelected');
+  let formatDate = unformattedDate.split('-');
+  dateInput = formatDate.join('/');
   const roomTypeInput = formData.get('room type');
   if (!roomTypeInput) {
     const availableRooms = hotel.filterRoomsByDate(dateInput);
@@ -87,8 +87,6 @@ searchForm.addEventListener('submit', (e) => {
 bookable.addEventListener('click', (e) => {
   let id = e.target.closest('button').id
   definePost(currentUser, dateInput, id)
-  
-  console.log(newPost)
   postData(newPost).then(() => loadPage())
 })
 

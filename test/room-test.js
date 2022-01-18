@@ -14,7 +14,7 @@ describe('Room', () => {
   });
 
   it('should have a number', () => {
-    expect(room.roomNumber).to.equal(1)
+    expect(room.number).to.equal(1)
   });
 
   it('should have a room type', () => {

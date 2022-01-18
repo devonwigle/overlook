@@ -32,7 +32,7 @@ let domUpdates = {
     bookableRooms.innerHTML = ``
     availableRooms.forEach(room => bookableRooms.innerHTML += `
       <div class="options">
-        <p>Room Number: ${room.roomNumber}</p>  
+        <p>Room Number: ${room.number}</p>  
         <p>Room Type: ${room.roomType}</p>
         <p>Has a Bidet: ${room.bidet}</p>
         <p>Bed Size: ${room.bedSize}</p>

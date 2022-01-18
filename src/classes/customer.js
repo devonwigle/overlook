@@ -11,7 +11,7 @@ class Customer {
   sumUserBookings(hotel) {
     let sum = this.bookings.reduce((sum, booking) => {
       hotel.allRooms.forEach(room => {
-        if (room.roomNumber === booking.roomNumber) {
+        if (room.number === booking.roomNumber) {
           sum += room.cost
         }
       })
