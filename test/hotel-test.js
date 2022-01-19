@@ -4,8 +4,6 @@ import roomsData from './test-data/room-data';
 import customersData from './test-data/customer-data';
 
 import Customer from '../src/classes/customer';
-import Room from '../src/classes/room';
-import Booking from '../src/classes/booking.js';
 import Hotel from '../src/classes/hotel';
 
 describe('hotel', () => {
