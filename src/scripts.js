@@ -100,16 +100,20 @@ selectionForm.addEventListener('submit', (e) => {
   let formatDate = unformattedDate.split('-');
   dateInput = formatDate.join('/');
   const roomTypeInput = formData.get('room type');
+  hotel.filterRoomsByDate(dateInput);
+  availableRooms = hotel.filteredRoomsByDate
   if (!roomTypeInput) {
-    hotel.filterRoomsByDate(dateInput);
-    availableRooms = hotel.filteredRoomsByDate
-    domUpdates.displayAvailableRoomsByDateType(availableRooms);
-  } else if (roomTypeInput && !availableRooms) {
-    domUpdates.noAvailability()
-  } else if (roomTypeInput && availableRooms.length > 0) {
-    availableRooms = hotel.filterRoomsByType(roomTypeInput, dateInput);
     domUpdates.displayAvailableRoomsByDateType(availableRooms);
   }
+  if(roomTypeInput) {
+    hotel.filterRoomsByType(roomTypeInput, dateInput);
+    availableRooms = hotel.filteredRoomsByType
+  }
+  if (roomTypeInput && availableRooms.length > 0) {
+    domUpdates.displayAvailableRoomsByDateType(availableRooms);
+  } else  if (roomTypeInput && availableRooms.length === 0) {
+    domUpdates.noAvailability()
+  } 
   e.target.reset()
 });
 
