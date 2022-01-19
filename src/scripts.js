@@ -3,7 +3,6 @@ import {fetchAllData, fetchSingleUser, postData} from './APICalls';
 import Hotel from './classes/hotel';
 import domUpdates from './domUpdates'
 import './css/base.scss';
-import Customer from './classes/customer';
 
 // Global variables
 let hotel;
@@ -40,14 +39,14 @@ const login = (e) => {
   let userID = defineUser(usernameInput)
   if (userID > 0 && userID < 51 && passwordInput.value === 'overlook2021') {
     fetchTheData(userID)
-    .then(data => {
-      hotel = new Hotel(data[0], data[1], data[2])
-      addInfo()
-      console.log('hotel', hotel)
-      defineCurrentUser()
-      singleCustomerInfo()
-    })
-    .catch(error => domUpdates.fetchErrorMessage(error))
+      .then(data => {
+        hotel = new Hotel(data[0], data[1], data[2])
+        addInfo()
+        console.log('hotel', hotel)
+        defineCurrentUser()
+        singleCustomerInfo()
+      })
+      .catch(error => domUpdates.fetchErrorMessage(error))
   }
   domUpdates.show(mainPage)
   domUpdates.hide(loginPage)
@@ -105,7 +104,7 @@ selectionForm.addEventListener('submit', (e) => {
   if (!roomTypeInput) {
     domUpdates.displayAvailableRoomsByDateType(availableRooms);
   }
-  if(roomTypeInput) {
+  if (roomTypeInput) {
     hotel.filterRoomsByType(roomTypeInput, dateInput);
     availableRooms = hotel.filteredRoomsByType
   }
