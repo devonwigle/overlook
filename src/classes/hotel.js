@@ -11,6 +11,8 @@ class Hotel {
     this.allRooms = [];
     this.allBookings = [];
     this.allCustomers = [];
+    this.filteredRoomsByDate = [];
+    this.filteredRoomsByType = [];
   }
   
   addRooms() {
