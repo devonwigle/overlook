@@ -15,7 +15,7 @@ let response;
 let availableRooms;
 
 //QuerySelectors
-const searchForm = document.querySelector('form');
+const selectionForm = document.querySelector('form');
 const bookable = document.querySelector('.bookable-rooms')
 
 // Functions
