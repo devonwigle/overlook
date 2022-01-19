@@ -101,7 +101,8 @@ selectionForm.addEventListener('submit', (e) => {
   dateInput = formatDate.join('/');
   const roomTypeInput = formData.get('room type');
   if (!roomTypeInput) {
-    availableRooms = hotel.filterRoomsByDate(dateInput);
+    hotel.filterRoomsByDate(dateInput);
+    availableRooms = hotel.filteredRoomsByDate
     domUpdates.displayAvailableRoomsByDateType(availableRooms);
   } else if (roomTypeInput && !availableRooms) {
     domUpdates.noAvailability()
