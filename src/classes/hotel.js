@@ -1,7 +1,6 @@
 import Customer from './customer';
 import Room from './room';
 import Booking from './booking';
-import roomsData from '../../test/test-data/room-data';
 
 class Hotel {
   constructor(roomsData, customersData, bookingsData) {
@@ -11,6 +10,8 @@ class Hotel {
     this.allRooms = [];
     this.allBookings = [];
     this.allCustomers = [];
+    this.filteredRoomsByDate = [];
+    this.filteredRoomsByType = []
   }
   
   addRooms() {
@@ -52,38 +53,22 @@ class Hotel {
   filterRoomsByDate(dateInput) {
     let formatInputDate = dateInput.split('-');
     let properInputDate = formatInputDate.join('/');
-    let filteredRoomsByDate = []
     let unavailableByDate = this.allBookings.reduce((unavailableByDate, booking) => {
       if (properInputDate === booking.date) {
         unavailableByDate.push(booking.roomNumber)
       }
       return unavailableByDate
     }, [])
-    filteredRoomsByDate = this.allRooms.filter(room => {
+    this.filteredRoomsByDate = this.allRooms.filter(room => {
       return !unavailableByDate.includes(room.number)
     })
-    return filteredRoomsByDate
   }
 
-  filterRoomsByType(roomTypeInput, dateInput) {
-    let formatInputDate = dateInput.split('-');
-    let properInputDate = formatInputDate.join('/');
-    let filteredRoomsByDate = []
-    let unavailableByDate = this.allBookings.reduce((unavailableByDate, booking) => {
-      if (properInputDate === booking.date) {
-        unavailableByDate.push(booking.roomNumber)
-      }
-      return unavailableByDate
-    }, [])
-    filteredRoomsByDate = this.allRooms.filter(room => {
-      return !unavailableByDate.includes(room.number)
-    })
-    if (filteredRoomsByDate.length !== 0) {
-      let filteredRoomsByType = filteredRoomsByDate.filter(room => room.roomType === roomTypeInput)
-      if (filteredRoomsByType.length === 0) {
+  filterRoomsByType(roomTypeInput) {
+    if (this.filteredRoomsByDate.length !== 0) {
+      this.filteredRoomsByType = this.filteredRoomsByDate.filter(room => room.roomType === roomTypeInput)
+      if (this.filteredRoomsByType.length === 0) {
         return `We are profusely sorry.`
-      } else {
-        return filteredRoomsByType
       }
     }
   }

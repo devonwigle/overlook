@@ -106,8 +106,8 @@ describe('hotel', () => {
     hotel.addRooms();
     hotel.addBookings();
     hotel.filterBookingsByCustomerID(customer1)
-
-    expect(hotel.filterRoomsByDate('2022-02-25')).to.deep.equal([
+    hotel.filterRoomsByDate('2022-02-25')
+    expect(hotel.filteredRoomsByDate).to.deep.equal([
       {
         number: 1,
         roomType: 'residential suite',
@@ -154,8 +154,10 @@ describe('hotel', () => {
   it('should have a method to filter rooms available by type', () => {
     hotel.addRooms();
     hotel.addBookings();
+    hotel.filterRoomsByDate('2022-02-25');
+    hotel.filterRoomsByType('single room', '2022-02-25')
 
-    expect(hotel.filterRoomsByType('single room', '2022-02-25')).to.deep.equal([
+    expect(hotel.filteredRoomsByType).to.deep.equal([
       {
         number: 3,
         roomType: 'single room',
@@ -186,7 +188,8 @@ describe('hotel', () => {
   it('should tell you when nothing is available', () => {
     hotel.addRooms();
     hotel.addBookings();
-
+    hotel.filterRoomsByDate('2022-02-25');
+    hotel.filterRoomsByType('queen', '2022-02-25')
     expect(hotel.filterRoomsByType('queen', '2022-02-25')).to.equal(`We are profusely sorry.`)
   });
 })
