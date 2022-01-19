@@ -68,7 +68,7 @@ const singleCustomerInfo = () => {
 }
 
 const fetchTheData = (userID) => {
-  return response = Promise.all([fetchAllData('rooms'), fetchSingleUser(userID), fetchAllData('bookings')])
+  return Promise.all([fetchAllData('rooms'), fetchSingleUser(userID), fetchAllData('bookings')])
 }
 
 const defineUser = (input) => {
@@ -116,13 +116,16 @@ bookable.addEventListener('click', (e) => {
   let id = e.target.closest('button').id
   definePost(currentUser, dateInput, id)
   postData(newPost).then(() => loadPage())
+  domUpdates.resetBookableRooms()
 })
+
 bookable.addEventListener('keydown', (e) => {
   if ((e.key === 'Enter' || e.key === 13) || (e.key === ' ' || e.key === 32)) {
     e.preventDefault()
     let id = e.target.closest('button').id
     definePost(currentUser, dateInput, id)
     postData(newPost).then(() => loadPage())
+    domUpdates.resetBookableRooms()
   }
 })
 
