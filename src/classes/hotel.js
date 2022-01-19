@@ -1,7 +1,6 @@
 import Customer from './customer';
 import Room from './room';
 import Booking from './booking';
-import roomsData from '../../test/test-data/room-data';
 
 class Hotel {
   constructor(roomsData, customersData, bookingsData) {
@@ -12,6 +11,7 @@ class Hotel {
     this.allBookings = [];
     this.allCustomers = [];
     this.filteredRoomsByDate = [];
+    this.filteredRoomsByType = []
   }
   
   addRooms() {
@@ -53,7 +53,6 @@ class Hotel {
   filterRoomsByDate(dateInput) {
     let formatInputDate = dateInput.split('-');
     let properInputDate = formatInputDate.join('/');
-    let filteredRoomsByDate = []
     let unavailableByDate = this.allBookings.reduce((unavailableByDate, booking) => {
       if (properInputDate === booking.date) {
         unavailableByDate.push(booking.roomNumber)
@@ -65,25 +64,11 @@ class Hotel {
     })
   }
 
-  filterRoomsByType(roomTypeInput, dateInput) {
-    // let formatInputDate = dateInput.split('-');
-    // let properInputDate = formatInputDate.join('/');
-    // let filteredRoomsByDate = []
-    // let unavailableByDate = this.allBookings.reduce((unavailableByDate, booking) => {
-    //   if (properInputDate === booking.date) {
-    //     unavailableByDate.push(booking.roomNumber)
-    //   }
-    //   return unavailableByDate
-    // }, [])
-    // filteredRoomsByDate = this.allRooms.filter(room => {
-    //   return !unavailableByDate.includes(room.number)
-    // })
+  filterRoomsByType(roomTypeInput) {
     if (this.filteredRoomsByDate.length !== 0) {
-      let filteredRoomsByType = this.filteredRoomsByDate.filter(room => room.roomType === roomTypeInput)
-      if (filteredRoomsByType.length === 0) {
+      this.filteredRoomsByType = this.filteredRoomsByDate.filter(room => room.roomType === roomTypeInput)
+      if (this.filteredRoomsByType.length === 0) {
         return `We are profusely sorry.`
-      } else {
-        return filteredRoomsByType
       }
     }
   }
