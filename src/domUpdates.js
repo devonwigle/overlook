@@ -52,6 +52,10 @@ let domUpdates = {
   },
   hide(hide) {
     hide.classList.add('hidden')
+  },
+  resetBookableRooms(){
+    let bookableRooms = document.querySelector('.bookable-rooms');
+    bookableRooms.innerHTML = `Search to book another room!`
   }
 }
 
