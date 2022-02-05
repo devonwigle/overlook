@@ -47,6 +47,10 @@ let domUpdates = {
     let bookableRooms = document.querySelector('.bookable-rooms');
     bookableRooms.innerHTML = `<h2>We SOOOO sorry, your choices are not available on this day.  Please try another day, you will not be sorry</h2>`
   },
+  displayLoginError(place) {
+    const loginError = document.querySelector('.login-error')
+    loginError.innerText = `Oops, your ${place} incorrect`
+  },
   show(show) {
     show.classList.remove('hidden')
   },

@@ -20,6 +20,7 @@ const loginButton = document.querySelector('.login-button');
 const mainPage = document.querySelector('.main-page');
 const loginPage = document.querySelector('.login-page');
 const selectionForm = document.querySelector('.selection-form')
+const loginError = document.querySelector('.login-error')
 
 // Functions
 const loadPage = () => {
@@ -47,9 +48,18 @@ const login = (e) => {
         singleCustomerInfo()
       })
       .catch(error => domUpdates.fetchErrorMessage(error))
+    domUpdates.show(mainPage)
+    domUpdates.hide(loginPage)
+  } else if (userID > 0 && userID < 51 && passwordInput.value !== 'overlook2021') {
+    domUpdates.displayLoginError('password is')
+    domUpdates.show(loginError)
+  } else if (!userID > 0 && !userID < 51 && passwordInput.value === 'overlook2021') {
+    domUpdates.displayLoginError('username is')
+    domUpdates.show(loginError)
+  } else {
+    domUpdates.displayLoginError('username and password are')
+    domUpdates.show(loginError)
   }
-  domUpdates.show(mainPage)
-  domUpdates.hide(loginPage)
 }
 
 const addInfo = () => {

@@ -71,10 +71,15 @@ h2 {
   @include display-direction-justify(flex, column, space-between);
   padding-top: 35px;
 }
+
 .login-page {
   @include display-direction-justify(flex, column, center);
   align-content: center;
   align-items: center;
+}
+
+.login-error {
+  color: $light-text;
 }
 
 .login-box {
