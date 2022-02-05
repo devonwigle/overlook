@@ -28,6 +28,10 @@ nav {
   height: 75px;
 }
 
+.login-nav {
+  width: 100%
+}
+
 .image-scroll {
   @include box-size(100px, 100%);
   display: inline-block;
@@ -68,8 +72,9 @@ h2 {
   padding-top: 35px;
 }
 .login-page {
-  @include display-direction-justify(flex, row, center);
+  @include display-direction-justify(flex, column, center);
   align-content: center;
+  align-items: center;
 }
 
 .login-box {
@@ -77,6 +82,7 @@ h2 {
   @include box-size(160px, 400px);
   background-color: $nav-color;
   padding-top: 80px;
+  margin-top: 10%
 }
 
 form {
