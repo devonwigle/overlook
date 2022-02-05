@@ -6,7 +6,7 @@ let domUpdates = {
   },
   displayUsersExpenses(sum) {
     let amountSpent = document.querySelector('.amount');
-    amountSpent.innerText = `Amount Spent: $${sum}`
+    amountSpent.innerText = `Amount Spent: $${sum.toFixed(2)}`
   },
   displayUserBookings(currentUser) {
     let imageScroll = document.querySelector('.image-scroll');
